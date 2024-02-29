@@ -1,0 +1,8 @@
+[alias]
+	ci = commit
+	st = status
+	br = branch
+	co = checkout
+	pf = push --force-with-lease
+	dm = diff master...HEAD
+	lo = log --oneline

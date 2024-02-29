@@ -1,0 +1,45 @@
+# See autoload/my_config/ for more personal config.
+
+set global tabstop 4
+set global indentwidth 0  # Use tabs
+#set global indentwidth 4  # Use spaces
+
+# add-highlighter global/ column '81' default,red
+
+set global grepcmd ag
+alias global ag grep
+
+set global ctagscmd 'uctags -R --fields=+S'
+set global readtagscmd 'ureadtags'
+
+# The mouse doesn't work for me anyways and with this mouse selection works:
+set global ui_options terminal_enable_mouse=false
+
+declare-user-mode spell
+map global spell c ':spell<ret>' -docstring "Spell check (en)"
+map global spell d ':spell de<ret>' -docstring "Spell check (de)"
+map global spell n ':spell-next<ret>' -docstring "Spell next"
+map global spell r ':spell-replace<ret>' -docstring "Spell replace"
+
+map global no X 'xGLJ'
+
+# User mappings
+map global user w ':write<ret>' -docstring 'save'
+map global user q ':quit<ret>' -docstring 'quit'
+## From https://github.com/mawww/kakoune/issues/1099 :
+map global user y '<a-|>xclip -i<ret>' \
+	-docstring 'yank clipboard'
+map global user p '!xclip -o<ret>' -docstring 'paste clipboard'
+map global user f '|par<ret>' -docstring "Format to fit 72 columns"
+map global user F '|par w80<ret>' -docstring "Format to fit 80 columns"
+map global user t ':set buffer filetype ' -docstring "Set filetype"
+map global user e ':edit ' -docstring "Edit file"
+map global user b ':buffer ' -docstring "Change buffer"
+map global user l ':enter-user-mode lsp<ret>' -docstring "LSP commands"
+map global user s ':enter-user-mode spell<ret>' -docstring "Spell commands"
+
+# Softwrap
+addhl global/ wrap
+
+# Highlight tabs
+add-highlighter global/ show-whitespaces -tab "›" -lf " " -nbsp "⋅" -spc " "
