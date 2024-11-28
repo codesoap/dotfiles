@@ -1,0 +1,7 @@
+# This config improves startup speed, while providing
+# enough functionality for quick screenshot edits.
+
+(plug-in-path "/usr/local/lib/gimp/2.0/plug-ins/file-png")
+(module-path "")
+(brush-path "")
+(font-path "")
